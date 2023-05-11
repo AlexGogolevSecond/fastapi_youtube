@@ -22,15 +22,6 @@ class User(BaseModel):
 async def get_user(user_id: int):
     return [user for user in fake_users if user['id'] == user_id]
 
-fake_trades = [
-    {"id": 1, "user_id": 1, "currency": "BTC", "side": "buy", "price": 123, "amount": 2.12},
-    {"id": 2, "user_id": 1, "currency": "BTC", "side": "sell", "price": 125, "amount": 2.12},
-]
-
-@app.get("/trades")
-def get_trades(limit: int = 10, offset: int = 0):
-    return fake_trades[offset:][:limit]
-
 
 fake_users2 = [
     {"id": 1, "role": "admin", "name": "Bob"},
@@ -60,6 +51,17 @@ class Trade(BaseModel):
     side: str
     price: float = Field(ge=0)
     amount: float
+
+
+fake_trades = [
+    {"id": 1, "user_id": 1, "currency": "BTC", "side": "buy", "price": 123, "amount": 2.12},
+    {"id": 2, "user_id": 1, "currency": "BTC", "side": "sell", "price": 125, "amount": 2.12},
+]
+
+@app.get("/trades")
+def get_trades(limit: int = 10, offset: int = 0):
+    return fake_trades[offset:][:limit]
+
 
 
 @app.post("/trades/")
