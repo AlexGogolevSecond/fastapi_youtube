@@ -74,6 +74,14 @@ fake_trades = [
 
 @app.get("/trades")
 def get_trades(limit: int = 1, offset: int = 0):  # QUERY-param
+    """
+    Args:
+        limit (int, optional): Ограничение. Defaults to 1.
+        offset (int, optional): Сдвиг. Defaults to 0.
+
+    Returns:
+        _type_: _description_
+    """
     return fake_trades[offset:][:limit]
 
 
