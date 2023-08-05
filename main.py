@@ -4,7 +4,7 @@ from typing import List, Optional
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
-app = FastAPI(title='Training app')
+app = FastAPI(title='Traiding app')
 
 # region
 fake_users = [
