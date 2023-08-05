@@ -49,9 +49,9 @@ fake_users2 = [
 
 @app.post("/users/{user_id}")  # PATH-param
 async def change_user_name(user_id: int, new_name: str):
-    current_user = list(filter(lambda user: user.get("id") == user_id,
-                               fake_users2))[0]
+    current_user = list(filter(lambda user: user.get("id") == user_id, fake_users2))[0]
     print(current_user)
+    # но проще если сделать как ниже
     current_user2 = [x for x in fake_users2 if x.get('id') == user_id][0]
     print(current_user2)
 
@@ -82,8 +82,7 @@ def get_trades(limit: int = 1, offset: int = 0):  # QUERY-param
     Returns:
         _type_: _description_
     """
-    # return fake_trades[offset:][:limit]
-    return fake_trades[offset:limit]
+    return fake_trades[offset:][:limit]
 
 
 class Trade(BaseModel):
