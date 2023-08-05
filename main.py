@@ -82,7 +82,8 @@ def get_trades(limit: int = 1, offset: int = 0):  # QUERY-param
     Returns:
         _type_: _description_
     """
-    return fake_trades[offset:][:limit]
+    # return fake_trades[offset:][:limit]
+    return fake_trades[offset:limit]
 
 
 class Trade(BaseModel):
