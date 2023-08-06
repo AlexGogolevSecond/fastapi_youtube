@@ -48,15 +48,15 @@ fake_users2 = [
 
 
 @app.post("/users/{user_id}")  # PATH-param
-async def change_user_name(user_id: int, new_name: str):
+async def change_user_name(user_id: int, new_name: str):  # new_name is QUERY-param
     current_user = list(filter(lambda user: user.get("id") == user_id, fake_users2))[0]
     print(current_user)
     # но проще если сделать как ниже
     current_user2 = [x for x in fake_users2 if x.get('id') == user_id][0]
     print(current_user2)
 
-    current_user["name"] = new_name
-    return {"status": 200, "data": current_user}
+    current_user2["name"] = new_name
+    return {"status": 200, "data": current_user2}
 
 
 @app.get("/")
